@@ -19,11 +19,11 @@ import java.util.Scanner;
  *
  * @author marco
  *
- * Versione senza strutturare i dati in un Albero, ma una doppia HashMap
+ * Versione senza strutturare i dati in un Albero, ma con HashMap , e una Queue per il buffer di scrittura
  */
 public class Solution {
 
-    public static void printHierarchy(String rootManager, Map<String, List<String>> rootMap, Map<String, Boolean> rootVisited) {
+    public static void printHierarchy(String rootManager, Map<String, List<String>> rootMap) {
 
         Queue<String> toPrint = new LinkedList<>();
         toPrint.add(rootManager);
@@ -36,7 +36,7 @@ public class Solution {
                     for (String next : nextLevel) {
                         toPrint.add(next);
                     }
-                    rootVisited.put(empName, Boolean.TRUE);
+                    //rootVisited.put(empName, Boolean.TRUE);
                 }
                 System.out.print(empName + " ");
             }
@@ -48,7 +48,7 @@ public class Solution {
         Scanner scan = new Scanner(new FileInputStream(args[0]));
         int N = scan.nextInt();
         Map<String, List<String>> rootMap = new LinkedHashMap<>(N);
-        Map<String, Boolean> rootVisited = new LinkedHashMap<>(N);
+        //Map<String, Boolean> rootVisited = new LinkedHashMap<>(N);
         List<String> subEmplLyst;
         String employeeM;
         String employeeN;
@@ -61,7 +61,7 @@ public class Solution {
         subEmplLyst = new ArrayList<>();
         subEmplLyst.add(employeeN);
         rootMap.put(rootManager, subEmplLyst);
-        rootVisited.put(rootManager, Boolean.FALSE);
+        //rootVisited.put(rootManager, Boolean.FALSE);
         while (scan.hasNext()) {
             employeeM = scan.next();
             if (rootMap.containsKey(employeeM)) {
@@ -72,12 +72,14 @@ public class Solution {
                 subEmplLyst = new ArrayList<>();
                 subEmplLyst.add(employeeN);
                 rootMap.put(employeeM, subEmplLyst);
-                rootVisited.put(employeeM, Boolean.FALSE);
+                //rootVisited.put(employeeM, Boolean.FALSE);
             }
         }
 
-        printHierarchy(rootManager, rootMap, rootVisited);
-
+        //printHierarchy(rootManager, rootMap, rootVisited);
+        printHierarchy(rootManager, rootMap);
+        
     }
 
 }
+
