@@ -157,7 +157,7 @@ public class Solution2 {
 
         Employee employeeTree = populateTree(rootManager, dictionary);
 
-        int heightOfBinaryTree = heightOfBinaryTree(employeeTree);
+        //int heightOfBinaryTree = heightOfBinaryTree(employeeTree);
 
         BFSprintTreeLevel(employeeTree);
     }
